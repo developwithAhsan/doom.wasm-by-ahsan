@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# Canonical Sitemap
+Sitemap: https://ais-pre-kyojypevp5nnddqzgnttsh-65167605087.asia-east1.run.app/sitemap.xml

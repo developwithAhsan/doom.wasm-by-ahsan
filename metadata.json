@@ -1,0 +1,6 @@
+{
+  "name": "Doom WebAssembly",
+  "description": "Play classic DOOM (1993) directly in your browser via WebAssembly (doom.wasm). Features authentic audio, custom WAD loader, save game manager, and zero plugins or installs required.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
