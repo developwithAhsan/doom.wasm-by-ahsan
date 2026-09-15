@@ -8,30 +8,22 @@ import {
   BookOpen,
   ChevronDown,
   ChevronUp,
-  FileText,
-  Lock,
-  Scale,
   Sparkles,
-  ExternalLink,
   Layers,
 } from 'lucide-react';
-import { LegalDocType } from './LegalModal';
 
 interface ContentSectionsProps {
   onOpenControls: () => void;
   onOpenWadLoader: () => void;
   onOpenSaveManager: () => void;
-  onOpenLegalModal: (doc: LegalDocType) => void;
 }
 
 export const ContentSections: React.FC<ContentSectionsProps> = ({
   onOpenControls,
   onOpenWadLoader,
   onOpenSaveManager,
-  onOpenLegalModal,
 }) => {
   const [activeFaq, setActiveFaq] = useState<number | null>(null);
-  const [legalTab, setLegalTab] = useState<'privacy' | 'terms' | 'disclaimer'>('privacy');
 
   const toggleFaq = (index: number) => {
     setActiveFaq((prev) => (prev === index ? null : index));
@@ -357,163 +349,6 @@ export const ContentSections: React.FC<ContentSectionsProps> = ({
               </div>
             );
           })}
-        </div>
-      </section>
-
-      {/* ========================================================================= */}
-      {/* SECTION: FULL LEGAL SUITE (Privacy Policy, Terms, Disclaimer) */}
-      {/* ========================================================================= */}
-      <section
-        id="legal-section"
-        className="bg-[#141c28] border border-[#232e42] p-6 sm:p-8 space-y-6 shadow-2xl"
-      >
-        <div className="border-b border-[#202c3f] pb-4 flex flex-wrap items-center justify-between gap-3">
-          <div>
-            <h3 className="text-lg font-bold text-white uppercase tracking-wider flex items-center gap-2">
-              <Scale className="w-5 h-5 text-blue-400" />
-              Legal &amp; Compliance Center
-            </h3>
-            <p className="text-xs text-[#556982] mt-0.5">
-              Transparent, fully written policies protecting user privacy, trademark rights, and fair use
-            </p>
-          </div>
-
-          {/* Quick Trigger to Open in Full Modal */}
-          <button
-            type="button"
-            onClick={() => onOpenLegalModal(legalTab)}
-            className="flex items-center gap-1.5 px-3 py-1.5 bg-[#1a2536] hover:bg-[#233147] border border-[#2b3a52] text-xs font-bold text-white uppercase tracking-wider transition-colors cursor-pointer"
-          >
-            <ExternalLink className="w-3.5 h-3.5 text-blue-400" />
-            <span>Open Dedicated Document View</span>
-          </button>
-        </div>
-
-        {/* Tab Selection */}
-        <div className="flex border-b border-[#202c3f] bg-[#0e141f] text-xs font-semibold">
-          <button
-            type="button"
-            onClick={() => setLegalTab('privacy')}
-            className={`flex-1 py-3 px-4 text-center transition-colors border-b-2 cursor-pointer flex items-center justify-center gap-2 ${
-              legalTab === 'privacy'
-                ? 'border-emerald-500 text-white bg-[#141c28]'
-                : 'border-transparent text-[#7d91a9] hover:text-white'
-            }`}
-          >
-            <Lock className="w-3.5 h-3.5 text-emerald-400" />
-            <span>Privacy Policy</span>
-          </button>
-          <button
-            type="button"
-            onClick={() => setLegalTab('terms')}
-            className={`flex-1 py-3 px-4 text-center transition-colors border-b-2 cursor-pointer flex items-center justify-center gap-2 ${
-              legalTab === 'terms'
-                ? 'border-blue-500 text-white bg-[#141c28]'
-                : 'border-transparent text-[#7d91a9] hover:text-white'
-            }`}
-          >
-            <FileText className="w-3.5 h-3.5 text-blue-400" />
-            <span>Terms of Service</span>
-          </button>
-          <button
-            type="button"
-            onClick={() => setLegalTab('disclaimer')}
-            className={`flex-1 py-3 px-4 text-center transition-colors border-b-2 cursor-pointer flex items-center justify-center gap-2 ${
-              legalTab === 'disclaimer'
-                ? 'border-amber-500 text-white bg-[#141c28]'
-                : 'border-transparent text-[#7d91a9] hover:text-white'
-            }`}
-          >
-            <Scale className="w-3.5 h-3.5 text-amber-400" />
-            <span>Disclaimer &amp; Trademarks</span>
-          </button>
-        </div>
-
-        {/* Tab Content Display */}
-        <div className="bg-[#0e141f] border border-[#202c3f] p-5 rounded-xs text-xs leading-relaxed space-y-4 text-[#9bb0c9]">
-          {legalTab === 'privacy' && (
-            <div id="privacy" className="space-y-3">
-              <h4 className="text-sm font-bold text-white uppercase tracking-wider flex items-center gap-2">
-                <Lock className="w-4 h-4 text-emerald-400" />
-                Privacy Policy &bull; Zero Data Collection Standard
-              </h4>
-              <p>
-                <strong>Effective Date:</strong> September 15, 2026. This Privacy Policy governs the operation of Doom WebAssembly.
-              </p>
-              <p>
-                <strong>1. No Collection of Personal Data:</strong> We do not ask for, collect, store, sell, or transmit any personal
-                identifying information (such as your name, email address, IP address, device serial numbers, or location). You can play
-                Doom WebAssembly completely anonymously without account creation or login credentials.
-              </p>
-              <p>
-                <strong>2. Client-Side Browser Storage:</strong> Game save states and user settings (e.g. framerate targets) are saved
-                directly to your computer or mobile device using HTML5 LocalStorage. This data never leaves your device and can be cleared
-                at any time by resetting your browser cookies or clicking &quot;Wipe All Data&quot; in the Save Manager.
-              </p>
-              <p>
-                <strong>3. Local File Handling:</strong> Any custom WAD maps or audio packs you select via the Custom WAD Loader are read
-                strictly into in-memory JavaScript TypedArrays via the FileReader API. They are never uploaded or synced to external servers.
-              </p>
-              <p>
-                <strong>4. GDPR, CCPA, and CPRA Adherence:</strong> Because we collect and retain zero user data on our hosting infrastructure,
-                there is no personal record database subject to data access or deletion requests. Full data sovereignty remains with you.
-              </p>
-            </div>
-          )}
-
-          {legalTab === 'terms' && (
-            <div id="terms" className="space-y-3">
-              <h4 className="text-sm font-bold text-white uppercase tracking-wider flex items-center gap-2">
-                <FileText className="w-4 h-4 text-blue-400" />
-                Terms of Service &bull; Acceptable Use &amp; Rights
-              </h4>
-              <p>
-                <strong>1. Acceptance of Terms:</strong> By launching and playing Doom WebAssembly, you agree to these Terms of Service.
-                This service is provided free of charge for non-commercial educational, research, and recreational gaming purposes.
-              </p>
-              <p>
-                <strong>2. Permitted User Activity:</strong> You agree to use this site in compliance with all applicable local, national,
-                and international laws. You agree not to attempt denial-of-service attacks, reverse-proxy abuse, or malicious payload
-                injection via file loaders.
-              </p>
-              <p>
-                <strong>3. User-Provided WAD Content:</strong> If you load commercial IWAD files (e.g. DOOM II, Final DOOM) or community
-                PWADs, you acknowledge and certify that you have purchased or lawfully acquired those files in accordance with their respective
-                licensing agreements.
-              </p>
-              <p>
-                <strong>4. Warranty Disclaimer:</strong> The software is provided &quot;AS IS&quot; without warranty of any kind, express or
-                implied. We make no guarantees regarding uptime, browser compatibility across archaic devices, or uninterrupted play.
-              </p>
-            </div>
-          )}
-
-          {legalTab === 'disclaimer' && (
-            <div id="disclaimer" className="space-y-3">
-              <h4 className="text-sm font-bold text-white uppercase tracking-wider flex items-center gap-2">
-                <Scale className="w-4 h-4 text-amber-400" />
-                Legal Disclaimer, Trademarks &amp; Attribution
-              </h4>
-              <p>
-                <strong>1. Trademark Acknowledgement:</strong> DOOM is a registered trademark of id Software LLC, a ZeniMax Media company /
-                Bethesda / Microsoft. All game characters, logos, sprites, sound effects, and music compositions are the intellectual property
-                of their respective copyright owners.
-              </p>
-              <p>
-                <strong>2. Shareware Distribution Authorization:</strong> The bundled file <code>DOOM1.WAD</code> represents the original
-                1993 shareware edition (Episode 1: Knee-Deep in the Dead), which id Software released with explicit authorization for free,
-                unmodified public distribution for evaluation purposes.
-              </p>
-              <p>
-                <strong>3. Open Source Engine:</strong> The game engine implementation is derived from id Software&apos;s 1997 source code
-                release under the GNU GPLv2 and modern portable derivatives including <code>doomgeneric</code>.
-              </p>
-              <p>
-                <strong>4. DMCA Notice:</strong> If you are a copyright holder and believe any asset has been utilized without appropriate
-                authorization, please contact <code>dmca@doom-wasm.project</code> for immediate review and resolution.
-              </p>
-            </div>
-          )}
         </div>
       </section>
     </div>

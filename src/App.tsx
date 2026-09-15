@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { useDoomEngine } from './hooks/useDoomEngine';
 import { GameLauncherCard } from './components/GameLauncherCard';
 import { GameCanvas } from './components/GameCanvas';
@@ -6,12 +6,30 @@ import { ControlsModal } from './components/ControlsModal';
 import { WadLoaderModal } from './components/WadLoaderModal';
 import { EngineConsoleModal } from './components/EngineConsoleModal';
 import { SavesModal } from './components/SavesModal';
-import { LegalModal, LegalDocType } from './components/LegalModal';
 import { InGameHud } from './components/InGameHud';
 import { LoadingScreen } from './components/LoadingScreen';
 import { ContentSections } from './components/ContentSections';
+import { NavRoute } from './pages/PageLayout';
+import { PrivacyPage } from './pages/PrivacyPage';
+import { TermsPage } from './pages/TermsPage';
+import { DisclaimerPage } from './pages/DisclaimerPage';
+import { SitemapPage } from './pages/SitemapPage';
+import { RobotsPage } from './pages/RobotsPage';
 
 type ViewMode = 'launcher' | 'loading' | 'playing';
+
+function getRouteFromLocation(): NavRoute {
+  if (typeof window === 'undefined') return 'home';
+  const path = window.location.pathname.toLowerCase().replace(/\/$/, '') || '';
+  const hash = window.location.hash.toLowerCase().replace(/^#\/?/, '') || '';
+
+  if (path === '/privacy' || hash === 'privacy') return 'privacy';
+  if (path === '/terms' || hash === 'terms') return 'terms';
+  if (path === '/disclaimer' || hash === 'disclaimer') return 'disclaimer';
+  if (path === '/sitemap' || hash === 'sitemap') return 'sitemap';
+  if (path === '/robots' || hash === 'robots') return 'robots';
+  return 'home';
+}
 
 export const App: React.FC = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -35,18 +53,34 @@ export const App: React.FC = () => {
     loadCustomWad,
   } = useDoomEngine(canvasRef);
 
+  const [currentRoute, setCurrentRoute] = useState<NavRoute>(getRouteFromLocation);
   const [viewMode, setViewMode] = useState<ViewMode>('launcher');
   const [isControlsOpen, setIsControlsOpen] = useState(false);
   const [isWadLoaderOpen, setIsWadLoaderOpen] = useState(false);
   const [isConsoleOpen, setIsConsoleOpen] = useState(false);
   const [isSavesOpen, setIsSavesOpen] = useState(false);
-  const [isLegalModalOpen, setIsLegalModalOpen] = useState(false);
-  const [legalDocType, setLegalDocType] = useState<LegalDocType>('privacy');
   const [isFullscreen, setIsFullscreen] = useState(false);
 
-  const handleOpenLegalModal = (doc: LegalDocType) => {
-    setLegalDocType(doc);
-    setIsLegalModalOpen(true);
+  // Listen to browser forward/back buttons and hash changes
+  useEffect(() => {
+    const handlePopState = () => {
+      setCurrentRoute(getRouteFromLocation());
+    };
+    window.addEventListener('popstate', handlePopState);
+    window.addEventListener('hashchange', handlePopState);
+    return () => {
+      window.removeEventListener('popstate', handlePopState);
+      window.removeEventListener('hashchange', handlePopState);
+    };
+  }, []);
+
+  const navigateTo = (route: NavRoute) => {
+    setCurrentRoute(route);
+    const targetPath = route === 'home' ? '/' : `/${route}`;
+    if (window.location.pathname !== targetPath) {
+      window.history.pushState({}, '', targetPath);
+    }
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const handleStartOrResumeGame = async () => {
@@ -97,6 +131,29 @@ export const App: React.FC = () => {
     }
   };
 
+  // ============================================================================
+  // SEPARATE DEDICATED PAGES (Privacy, Terms, Disclaimer, Sitemap, Robots)
+  // Not shown on Home page, accessible via their own routes and links!
+  // ============================================================================
+  if (currentRoute === 'privacy') {
+    return <PrivacyPage onNavigate={navigateTo} />;
+  }
+  if (currentRoute === 'terms') {
+    return <TermsPage onNavigate={navigateTo} />;
+  }
+  if (currentRoute === 'disclaimer') {
+    return <DisclaimerPage onNavigate={navigateTo} />;
+  }
+  if (currentRoute === 'sitemap') {
+    return <SitemapPage onNavigate={navigateTo} />;
+  }
+  if (currentRoute === 'robots') {
+    return <RobotsPage onNavigate={navigateTo} />;
+  }
+
+  // ============================================================================
+  // HOME / GAMEPLAY VIEW
+  // ============================================================================
   return (
     <div
       ref={mainContainerRef}
@@ -141,15 +198,14 @@ export const App: React.FC = () => {
             />
           </div>
 
-          {/* Content sections below card (About, Controls, Specs, FAQ, Legal) */}
+          {/* Content sections below card (About Story Blog, Controls, Specs, FAQ) */}
           <ContentSections
             onOpenControls={() => setIsControlsOpen(true)}
             onOpenWadLoader={() => setIsWadLoaderOpen(true)}
             onOpenSaveManager={() => setIsSavesOpen(true)}
-            onOpenLegalModal={handleOpenLegalModal}
           />
 
-          {/* Professional SEO Footer */}
+          {/* Professional Clean Footer with Dedicated Separate Links */}
           <footer
             id="site-footer"
             className="w-full max-w-4xl mt-14 pt-8 pb-12 border-t border-[#1e2a3b] text-xs font-mono text-[#7d91a9] space-y-4 select-text"
@@ -162,53 +218,58 @@ export const App: React.FC = () => {
                 </p>
               </div>
 
-              {/* Navigation & Legal Links */}
+              {/* Navigation to Separate Pages with their own links */}
               <nav aria-label="Footer Navigation" className="flex flex-wrap items-center gap-x-4 gap-y-2 text-[11px]">
-                <a href="#about" className="hover:text-white transition-colors">
-                  About DOOM
-                </a>
-                <span className="text-[#33445c]">&bull;</span>
-                <a href="#faq" className="hover:text-white transition-colors">
-                  SEO FAQs
-                </a>
-                <span className="text-[#33445c]">&bull;</span>
-                <button
-                  type="button"
-                  onClick={() => handleOpenLegalModal('privacy')}
-                  className="hover:text-white transition-colors cursor-pointer"
+                <a
+                  href="/privacy"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    navigateTo('privacy');
+                  }}
+                  className="hover:text-white transition-colors"
                 >
                   Privacy Policy
-                </button>
-                <span className="text-[#33445c]">&bull;</span>
-                <button
-                  type="button"
-                  onClick={() => handleOpenLegalModal('terms')}
-                  className="hover:text-white transition-colors cursor-pointer"
-                >
-                  Terms of Service
-                </button>
-                <span className="text-[#33445c]">&bull;</span>
-                <button
-                  type="button"
-                  onClick={() => handleOpenLegalModal('disclaimer')}
-                  className="hover:text-white transition-colors cursor-pointer"
-                >
-                  Disclaimer
-                </button>
+                </a>
                 <span className="text-[#33445c]">&bull;</span>
                 <a
-                  href="/sitemap.xml"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  href="/terms"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    navigateTo('terms');
+                  }}
+                  className="hover:text-white transition-colors"
+                >
+                  Terms of Service
+                </a>
+                <span className="text-[#33445c]">&bull;</span>
+                <a
+                  href="/disclaimer"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    navigateTo('disclaimer');
+                  }}
+                  className="hover:text-white transition-colors"
+                >
+                  Disclaimer
+                </a>
+                <span className="text-[#33445c]">&bull;</span>
+                <a
+                  href="/sitemap"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    navigateTo('sitemap');
+                  }}
                   className="hover:text-white transition-colors"
                 >
                   Sitemap
                 </a>
                 <span className="text-[#33445c]">&bull;</span>
                 <a
-                  href="/robots.txt"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  href="/robots"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    navigateTo('robots');
+                  }}
                   className="hover:text-white transition-colors"
                 >
                   Robots.txt
@@ -266,11 +327,6 @@ export const App: React.FC = () => {
       />
       <EngineConsoleModal isOpen={isConsoleOpen} onClose={() => setIsConsoleOpen(false)} logs={logs} />
       <SavesModal isOpen={isSavesOpen} onClose={() => setIsSavesOpen(false)} />
-      <LegalModal
-        isOpen={isLegalModalOpen}
-        initialDoc={legalDocType}
-        onClose={() => setIsLegalModalOpen(false)}
-      />
     </div>
   );
 };

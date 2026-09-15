@@ -10,33 +10,39 @@
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://ais-pre-kyojypevp5nnddqzgnttsh-65167605087.asia-east1.run.app/#about</loc>
+    <loc>https://ais-pre-kyojypevp5nnddqzgnttsh-65167605087.asia-east1.run.app/privacy</loc>
     <lastmod>2026-09-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://ais-pre-kyojypevp5nnddqzgnttsh-65167605087.asia-east1.run.app/#faq</loc>
+    <loc>https://ais-pre-kyojypevp5nnddqzgnttsh-65167605087.asia-east1.run.app/terms</loc>
     <lastmod>2026-09-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://ais-pre-kyojypevp5nnddqzgnttsh-65167605087.asia-east1.run.app/#privacy</loc>
+    <loc>https://ais-pre-kyojypevp5nnddqzgnttsh-65167605087.asia-east1.run.app/disclaimer</loc>
+    <lastmod>2026-09-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://ais-pre-kyojypevp5nnddqzgnttsh-65167605087.asia-east1.run.app/sitemap</loc>
+    <lastmod>2026-09-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://ais-pre-kyojypevp5nnddqzgnttsh-65167605087.asia-east1.run.app/robots.txt</loc>
     <lastmod>2026-09-15</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://ais-pre-kyojypevp5nnddqzgnttsh-65167605087.asia-east1.run.app/#terms</loc>
+    <loc>https://ais-pre-kyojypevp5nnddqzgnttsh-65167605087.asia-east1.run.app/sitemap.xml</loc>
     <lastmod>2026-09-15</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://ais-pre-kyojypevp5nnddqzgnttsh-65167605087.asia-east1.run.app/#disclaimer</loc>
-    <lastmod>2026-09-15</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.5</priority>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
   </url>
 </urlset>
