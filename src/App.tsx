@@ -94,6 +94,9 @@ export const App: React.FC = () => {
   }, []);
 
   const navigateTo = (route: NavRoute) => {
+    if (route !== 'home' && status === 'running') {
+      togglePause();
+    }
     setCurrentRoute(route);
     const targetPath = route === 'home' ? '/' : `/${route}`;
     if (window.location.pathname !== targetPath) {
