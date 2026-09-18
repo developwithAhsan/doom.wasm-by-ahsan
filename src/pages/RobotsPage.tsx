@@ -11,7 +11,7 @@ export const RobotsPage: React.FC<RobotsPageProps> = ({ onNavigate }) => {
 Allow: /
 
 # Canonical Sitemap
-Sitemap: https://ais-pre-kyojypevp5nnddqzgnttsh-65167605087.asia-east1.run.app/sitemap.xml`;
+Sitemap: https://doombrowser.vercel.app/sitemap.xml`;
 
   return (
     <PageLayout

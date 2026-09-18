@@ -9,6 +9,7 @@ import {
   ArrowLeft,
   Printer,
   ChevronRight,
+  Crosshair,
 } from 'lucide-react';
 
 export type NavRoute = 'home' | 'privacy' | 'terms' | 'disclaimer' | 'sitemap' | 'robots';
@@ -30,7 +31,7 @@ export const PageLayout: React.FC<PageLayoutProps> = ({
   badge,
   children,
 }) => {
-  // Update document title for SEO
+  // Update document title and canonical tag for SEO
   useEffect(() => {
     const titles: Record<NavRoute, string> = {
       home: 'Doom WebAssembly',
@@ -41,6 +42,20 @@ export const PageLayout: React.FC<PageLayoutProps> = ({
       robots: 'Robots.txt – Doom WebAssembly',
     };
     document.title = titles[currentRoute] || 'Doom WebAssembly';
+
+    // Update canonical link
+    let canonicalLink = document.querySelector('link[rel="canonical"]') as HTMLLinkElement | null;
+    if (!canonicalLink) {
+      canonicalLink = document.createElement('link');
+      canonicalLink.rel = 'canonical';
+      document.head.appendChild(canonicalLink);
+    }
+    const targetUrl =
+      currentRoute === 'home'
+        ? 'https://doombrowser.vercel.app/'
+        : `https://doombrowser.vercel.app/${currentRoute}`;
+    canonicalLink.href = targetUrl;
+
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [currentRoute]);
 
@@ -62,7 +77,7 @@ export const PageLayout: React.FC<PageLayoutProps> = ({
           className="flex items-center gap-3 text-left group cursor-pointer"
         >
           <div className="w-10 h-10 bg-red-950/70 border border-red-800/80 flex items-center justify-center rounded-xs shadow-lg group-hover:border-red-600 transition-colors">
-            <span className="text-xl">💥</span>
+            <Crosshair className="w-5 h-5 text-red-500" />
           </div>
           <div>
             <span className="text-base font-black text-white uppercase tracking-wider font-sans block group-hover:text-red-400 transition-colors">

@@ -4,44 +4,44 @@
         xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
   <url>
-    <loc>https://ais-pre-kyojypevp5nnddqzgnttsh-65167605087.asia-east1.run.app/</loc>
-    <lastmod>2026-09-15</lastmod>
+    <loc>https://doombrowser.vercel.app/</loc>
+    <lastmod>2026-09-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://ais-pre-kyojypevp5nnddqzgnttsh-65167605087.asia-east1.run.app/privacy</loc>
-    <lastmod>2026-09-15</lastmod>
+    <loc>https://doombrowser.vercel.app/privacy</loc>
+    <lastmod>2026-09-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://ais-pre-kyojypevp5nnddqzgnttsh-65167605087.asia-east1.run.app/terms</loc>
-    <lastmod>2026-09-15</lastmod>
+    <loc>https://doombrowser.vercel.app/terms</loc>
+    <lastmod>2026-09-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://ais-pre-kyojypevp5nnddqzgnttsh-65167605087.asia-east1.run.app/disclaimer</loc>
-    <lastmod>2026-09-15</lastmod>
+    <loc>https://doombrowser.vercel.app/disclaimer</loc>
+    <lastmod>2026-09-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://ais-pre-kyojypevp5nnddqzgnttsh-65167605087.asia-east1.run.app/sitemap</loc>
-    <lastmod>2026-09-15</lastmod>
+    <loc>https://doombrowser.vercel.app/sitemap</loc>
+    <lastmod>2026-09-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://ais-pre-kyojypevp5nnddqzgnttsh-65167605087.asia-east1.run.app/robots.txt</loc>
-    <lastmod>2026-09-15</lastmod>
+    <loc>https://doombrowser.vercel.app/robots.txt</loc>
+    <lastmod>2026-09-16</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://ais-pre-kyojypevp5nnddqzgnttsh-65167605087.asia-east1.run.app/sitemap.xml</loc>
-    <lastmod>2026-09-15</lastmod>
+    <loc>https://doombrowser.vercel.app/sitemap.xml</loc>
+    <lastmod>2026-09-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>

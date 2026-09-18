@@ -2,32 +2,34 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💥</text></svg>" />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='8' fill='%23b91c1c'/%3E%3Cpath d='M16 14h18c11 0 18 7.5 18 18s-7 18-18 18H16V14zm10 9v18h7c5.5 0 9-3.8 9-9s-3.5-9-9-9h-7z' fill='%23ffffff'/%3E%3C/svg%3E" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
     
     <!-- Primary SEO Meta Tags -->
     <title>Doom WebAssembly</title>
-    <meta name="title" content="Doom WebAssembly" />
-    <meta name="description" content="Play classic DOOM (1993) directly in your browser via WebAssembly (doom.wasm). Features authentic audio, custom WAD loader, save game manager, and zero plugins or installs required." />
-    <meta name="keywords" content="DOOM, DOOM WebAssembly, play DOOM in browser, play DOOM online, doom.wasm, doomgeneric, retro games, classic FPS, id Software, DOOM shareware, E1M1, browser games, WebAssembly games, PC retro gaming, John Carmack" />
+    <meta name="title" content="Doom WebAssembly - Play DOOM Online Free in Browser" />
+    <meta name="description" content="Play DOOM online in your browser for free with no download. Experience original classic DOOM 1 (1993) in WebAssembly with authentic audio, saves, and custom WADs." />
+    <meta name="keywords" content="online doom, play doom online, doom browser, doom online play, doom free play, doom play online, doom online free, doom browser game, doom online browser, play doom in browser, doom web browser, doom game online, doom free online, doom online no download, play doom online free, doom 1 online, doom 1 browser, play doom 1 online, doom web game, classic doom online, classic doom browser, original doom online, DOOM WebAssembly, doom.wasm" />
     <meta name="author" content="Doom WebAssembly Project" />
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
     <meta name="theme-color" content="#0e131b" />
-    <link rel="canonical" href="https://ais-pre-kyojypevp5nnddqzgnttsh-65167605087.asia-east1.run.app/" />
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://doombrowser.vercel.app/" />
 
     <!-- Open Graph / Facebook / Discord / Slack -->
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://ais-pre-kyojypevp5nnddqzgnttsh-65167605087.asia-east1.run.app/" />
+    <meta property="og:url" content="https://doombrowser.vercel.app/" />
     <meta property="og:site_name" content="Doom WebAssembly" />
     <meta property="og:title" content="Doom WebAssembly" />
-    <meta property="og:description" content="Play classic DOOM (1993) directly in your browser via WebAssembly (doom.wasm). Features authentic audio, custom WAD loader, save game manager, and zero plugins or installs required." />
+    <meta property="og:description" content="Play DOOM online in your browser for free with no download. Experience original classic DOOM 1 (1993) in WebAssembly with authentic audio, saves, and custom WADs." />
     <meta property="og:locale" content="en_US" />
 
     <!-- Twitter / X Cards -->
     <meta name="twitter:card" content="summary" />
-    <meta name="twitter:url" content="https://ais-pre-kyojypevp5nnddqzgnttsh-65167605087.asia-east1.run.app/" />
+    <meta name="twitter:url" content="https://doombrowser.vercel.app/" />
     <meta name="twitter:title" content="Doom WebAssembly" />
-    <meta name="twitter:description" content="Play classic DOOM (1993) directly in your browser via WebAssembly (doom.wasm). Features authentic audio, custom WAD loader, save game manager, and zero plugins or installs required." />
+    <meta name="twitter:description" content="Play DOOM online in your browser for free with no download. Experience original classic DOOM 1 (1993) in WebAssembly with authentic audio, saves, and custom WADs." />
 
     <!-- Structured Data 1: WebApplication & VideoGame Schema -->
     <script type="application/ld+json">
@@ -36,10 +38,10 @@
       "@graph": [
         {
           "@type": ["VideoGame", "WebApplication"],
-          "@id": "https://ais-pre-kyojypevp5nnddqzgnttsh-65167605087.asia-east1.run.app/#game",
+          "@id": "https://doombrowser.vercel.app/#game",
           "name": "Doom WebAssembly",
-          "url": "https://ais-pre-kyojypevp5nnddqzgnttsh-65167605087.asia-east1.run.app/",
-          "description": "Play classic DOOM (1993) directly in your browser via WebAssembly (doom.wasm). Features authentic audio, custom WAD loader, save game manager, and zero plugins or installs required.",
+          "url": "https://doombrowser.vercel.app/",
+          "description": "Play DOOM online in your browser for free with no download. Experience original classic DOOM 1 (1993) in WebAssembly with authentic audio, saves, and custom WADs.",
           "applicationCategory": "GameApplication",
           "genre": ["First-Person Shooter", "Action", "Retro Gaming"],
           "gamePlatform": ["Web Browser", "PC", "Mac", "Linux", "Mobile"],
@@ -59,7 +61,7 @@
         },
         {
           "@type": "FAQPage",
-          "@id": "https://ais-pre-kyojypevp5nnddqzgnttsh-65167605087.asia-east1.run.app/#faq",
+          "@id": "https://doombrowser.vercel.app/#faq",
           "mainEntity": [
             {
               "@type": "Question",
@@ -75,6 +77,14 @@
               "acceptedAnswer": {
                 "@type": "Answer",
                 "text": "Yes. This web port runs the official Episode 1 shareware release (DOOM1.WAD - Knee-Deep in the Dead), which id Software made freely distributable in 1993 for non-commercial evaluation and play."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Can I play DOOM online with no download?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes, you can play DOOM online directly in your browser with no download or setup required. The game boots in seconds using WebAssembly."
               }
             },
             {

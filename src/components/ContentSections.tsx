@@ -59,6 +59,14 @@ export const ContentSections: React.FC<ContentSectionsProps> = ({
       a: 'Yes. The engine is fully responsive and compatible across desktop PCs, Macs, Linux workstations, Chromebooks, iPhones, iPads, and Android smartphones. Any modern browser that supports standard WebAssembly and Web Audio API will run the game smoothly.',
     },
     {
+      q: 'Can I play DOOM online in browser with no download?',
+      a: 'Yes! You can play DOOM online directly in your web browser with zero downloads, plugins, or installations. The entire game binary compiles and loads instantly via WebAssembly into your browser tab in under two seconds.',
+    },
+    {
+      q: 'Is this classic DOOM online port identical to the original 1993 PC DOS release?',
+      a: 'Yes. This is an authentic recreation of original classic DOOM 1 (1993) compiled directly from the open-source C codebase using doomgeneric. It features the exact monster behaviors, weapon physics, secret room triggers, sound effects, and level layouts of Episode 1: Knee-Deep in the Dead.',
+    },
+    {
       q: 'How does framerate target switching work (35 FPS vs 60 FPS vs Unlocked)?',
       a: 'The original 1993 DOOM engine was mathematically hardcoded to run its game logic loop at exactly 35 ticks per second (35 Hz). Our WebAssembly port allows you to switch between authentic 35 FPS locking, smooth 60 FPS sync, or an Unlocked mode that utilizes your monitor\'s native requestAnimationFrame refresh rate (up to 144Hz/240Hz). You can toggle this limit directly from the launcher card or the in-game HUD.',
     },
