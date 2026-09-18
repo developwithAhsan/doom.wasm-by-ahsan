@@ -2,14 +2,22 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='8' fill='%23b91c1c'/%3E%3Cpath d='M16 14h18c11 0 18 7.5 18 18s-7 18-18 18H16V14zm10 9v18h7c5.5 0 9-3.8 9-9s-3.5-9-9-9h-7z' fill='%23ffffff'/%3E%3C/svg%3E" />
+    <!-- Favicon & PWA Manifest -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="alternate icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" href="/favicon.svg" />
+    <link rel="manifest" href="/manifest.json" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="DOOM" />
     
     <!-- Primary SEO Meta Tags -->
     <title>Doom WebAssembly</title>
     <meta name="title" content="Doom WebAssembly - Play DOOM Online Free in Browser" />
-    <meta name="description" content="Play DOOM online in your browser for free with no download. Experience original classic DOOM 1 (1993) in WebAssembly with authentic audio, saves, and custom WADs." />
-    <meta name="keywords" content="online doom, play doom online, doom browser, doom online play, doom free play, doom play online, doom online free, doom browser game, doom online browser, play doom in browser, doom web browser, doom game online, doom free online, doom online no download, play doom online free, doom 1 online, doom 1 browser, play doom 1 online, doom web game, classic doom online, classic doom browser, original doom online, DOOM WebAssembly, doom.wasm" />
+    <meta name="description" content="Play DOOM online in your browser for free with no download. Experience original classic DOOM 1, DOOM 2 & Ultimate DOOM in WebAssembly with WASD controls, controller support, and custom mods on PC, Mac, Chromebook, and Android." />
+    <meta name="keywords" content="doom online, play doom online, play doom online free, ultimate doom online, brutal doom online, final doom online, doom online free, original doom online, doom online game, doom online mobile, doom online android, doom online archive, doom online achievements, doom online arcade, doom arena online, doom ai online, doom online with controller, doom online with wasd, doom online with mods, doom online browser, doom brutal online, doom builder online, doom 2 online browser, play doom online browser, doom 64 online browser, brutal doom online game, brutal doom online browser, best way to play doom online, brutal doom online no download, best doom online, doom online coop, doom online controller support, doom online controls, doom classic online free, doom clone online, doom code online, can you play doom online, chocolate doom online, can i play doom online for free, classic doom online multiplayer, can you still play doom online, doom online dos, doom online download, doom online deathmatch, doom online dos game, doom online dosbox, doom demo online, do people still play doom online, dos doom online, dosbox doom online, doom doom online, doom online emulator, doom evilution online, doom online free game, doom play on browser, can you play doom on browser, play doom 2 on browser, how to play doom on mac, can you play doom on mac, how to play doom on macbook, can you play doom on a browser, how to play doom on a browser, doom settings, play doom in browser free, how to play doom on browser, doom play in browser, play doom in browser online, play doom in browser mobile, how to play doom on web browser, play doom on web browser, play doom 2 browser, how to play doom on chromebook, does doom 2 have multiplayer, can doom be played split screen, which doom games have multiplayer, is doom split screen, DOOM WebAssembly, doom.wasm" />
     <meta name="author" content="Doom WebAssembly Project" />
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
     <meta name="theme-color" content="#0e131b" />
@@ -20,19 +28,26 @@
     <!-- Google Search Console Verification -->
     <meta name="google-site-verification" content="google2a5cf9fe117640c7" />
 
-    <!-- Open Graph / Facebook / Discord / Slack -->
+    <!-- Open Graph / Facebook / Discord / Slack / Reddit -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://doombrowser.vercel.app/" />
     <meta property="og:site_name" content="Doom WebAssembly" />
-    <meta property="og:title" content="Doom WebAssembly" />
-    <meta property="og:description" content="Play DOOM online in your browser for free with no download. Experience original classic DOOM 1 (1993) in WebAssembly with authentic audio, saves, and custom WADs." />
+    <meta property="og:title" content="Doom WebAssembly - Play DOOM Online Free in Browser" />
+    <meta property="og:description" content="Play DOOM online in your browser for free with no download. Experience original classic DOOM 1, DOOM 2 & Ultimate DOOM in WebAssembly with WASD controls, controller support, and custom mods on PC, Mac, Chromebook, and Android." />
+    <meta property="og:image" content="https://doombrowser.vercel.app/og-image.svg" />
+    <meta property="og:image:type" content="image/svg+xml" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Doom WebAssembly - Play Original DOOM Online Free in Browser" />
     <meta property="og:locale" content="en_US" />
 
     <!-- Twitter / X Cards -->
-    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:url" content="https://doombrowser.vercel.app/" />
-    <meta name="twitter:title" content="Doom WebAssembly" />
-    <meta name="twitter:description" content="Play DOOM online in your browser for free with no download. Experience original classic DOOM 1 (1993) in WebAssembly with authentic audio, saves, and custom WADs." />
+    <meta name="twitter:title" content="Doom WebAssembly - Play DOOM Online Free in Browser" />
+    <meta name="twitter:description" content="Play DOOM online in your browser for free with no download. Experience original classic DOOM 1, DOOM 2 & Ultimate DOOM in WebAssembly with WASD controls, controller support, and custom mods on PC, Mac, Chromebook, and Android." />
+    <meta name="twitter:image" content="https://doombrowser.vercel.app/og-image.svg" />
+    <meta name="twitter:image:alt" content="Doom WebAssembly Browser Game Preview" />
 
     <!-- Structured Data 1: WebApplication & VideoGame Schema -->
     <script type="application/ld+json">
@@ -44,11 +59,11 @@
           "@id": "https://doombrowser.vercel.app/#game",
           "name": "Doom WebAssembly",
           "url": "https://doombrowser.vercel.app/",
-          "description": "Play DOOM online in your browser for free with no download. Experience original classic DOOM 1 (1993) in WebAssembly with authentic audio, saves, and custom WADs.",
+          "description": "Play DOOM online in your browser for free with no download. Experience original classic DOOM 1, DOOM 2 & Ultimate DOOM in WebAssembly with WASD controls, controller support, and custom mods on PC, Mac, Chromebook, and Android.",
           "applicationCategory": "GameApplication",
           "genre": ["First-Person Shooter", "Action", "Retro Gaming"],
-          "gamePlatform": ["Web Browser", "PC", "Mac", "Linux", "Mobile"],
-          "operatingSystem": "All modern browsers (Chrome, Firefox, Safari, Edge)",
+          "gamePlatform": ["Web Browser", "PC", "Mac", "Linux", "Mobile", "Chromebook", "Android", "iOS"],
+          "operatingSystem": "All modern browsers (Chrome, Firefox, Safari, Edge, Brave)",
           "browserRequirements": "Requires WebAssembly and Web Audio API support",
           "playMode": "SinglePlayer",
           "offers": {
@@ -68,58 +83,82 @@
           "mainEntity": [
             {
               "@type": "Question",
-              "name": "What is Doom WebAssembly?",
+              "name": "How to play DOOM on browser for free?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "Doom WebAssembly is a pure client-side port of id Software's legendary 1993 first-person shooter DOOM. It runs natively in any modern web browser using WebAssembly (Wasm) compiled with doomgeneric, requiring zero plugins, downloads, or external emulators."
+                "text": "To play DOOM online on browser for free, click the Launch Game button on our homepage. The game loads instantly via WebAssembly into your web browser with no download, no plugins, and no sign-up required. It runs at near-native speed on Chrome, Safari, Firefox, Edge, and Brave across PC, Mac, Linux, and Chromebooks."
               }
             },
             {
               "@type": "Question",
-              "name": "Is DOOM in the browser free to play?",
+              "name": "Can you play DOOM on Mac, MacBook, or Chromebook?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "Yes. This web port runs the official Episode 1 shareware release (DOOM1.WAD - Knee-Deep in the Dead), which id Software made freely distributable in 1993 for non-commercial evaluation and play."
+                "text": "Yes, absolutely. If you want to know how to play DOOM on Mac, MacBook, or Chromebook, this WebAssembly port requires no DOSBox installation, Wine emulators, or terminal commands. Simply open any modern browser on macOS or ChromeOS, click launch, and play classic DOOM smoothly in your browser window."
               }
             },
             {
               "@type": "Question",
-              "name": "Can I play DOOM online with no download?",
+              "name": "Can you play DOOM online on mobile and Android devices?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "Yes, you can play DOOM online directly in your browser with no download or setup required. The game boots in seconds using WebAssembly."
+                "text": "Yes, DOOM online runs directly inside mobile web browsers on Android and iOS (iPhone/iPad). You can launch and play DOOM on mobile without downloading an APK or installing third-party apps. Pairing a Bluetooth gamepad controller or mobile keyboard provides full desktop-grade precision."
               }
             },
             {
               "@type": "Question",
-              "name": "Can I load my own custom WAD files or commercial DOOM II?",
+              "name": "Does this DOOM online browser game support controllers and custom WASD controls?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "Yes! The built-in Custom WAD Loader lets you drag and drop or select any valid .WAD file from your computer (such as DOOM2.WAD, TNT.WAD, PLUTONIA.WAD, or community PWAD maps like SIGIL). The engine dynamically mounts the WAD into virtual memory and runs it immediately."
+                "text": "Yes. Doom WebAssembly features full support for modern WASD keyboard movement, mouse look, and USB/Bluetooth gamepad controllers (including Xbox, PlayStation, and generic PC gamepads). You can customize mouse sensitivity, sound volumes, gamma brightness, and controls through the in-game DOOM settings menu."
               }
             },
             {
               "@type": "Question",
-              "name": "How are game saves preserved between sessions?",
+              "name": "Can I play DOOM 2, Ultimate DOOM, Final DOOM, or Brutal DOOM mods online?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "Game saves are serialized directly into your browser's private HTML5 LocalStorage database. You have access to 6 independent save slots that persist even when you refresh the page or close your browser."
+                "text": "Yes! Our custom WAD loader enables you to play DOOM 2 on browser, The Ultimate DOOM (with Episode 4: Thy Flesh Consumed), Final DOOM (TNT: Evilution and The Plutonia Experiment), and community mods or Brutal DOOM-compatible PWAD maps. Drag and drop your .wad file into the browser, and the engine mounts it in virtual memory instantly without uploading to any remote server."
               }
             },
             {
               "@type": "Question",
-              "name": "Does Doom WebAssembly collect any personal data?",
+              "name": "Do you need DOSBox, an emulator, or any file download to play classic DOOM online?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "No. The game runs 100% client-side in your browser sandbox. No user data, keystrokes, save files, or analytics are transmitted to any remote server."
+                "text": "No. Unlike legacy DOSBox emulators or Java applets that suffered from audio stuttering and frame drops, this port compiles the authentic 1993 C source code directly to WebAssembly bytecode. There are zero downloads, zero emulators to configure, and zero local files to install."
               }
             },
             {
               "@type": "Question",
-              "name": "What are the default keyboard and mouse controls?",
+              "name": "Is playing DOOM in the web browser legal and free?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "Move with WASD or Arrow keys, fire weapon with Ctrl or Left Mouse Click, open doors and activate switches with Spacebar, switch weapons using 1 through 7, speed run with Shift, and press Escape to toggle the in-game options menu."
+                "text": "Yes, 100% legal and free. The web version includes the official shareware release of Episode 1: Knee-Deep in the Dead (DOOM1.WAD), which id Software made freely distributable in 1993 for non-commercial evaluation. Additionally, John Carmack released the original DOOM engine source code under the GNU General Public License (GPLv2) in 1997."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Does classic DOOM online have multiplayer, deathmatch, co-op, or split screen?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "The original 1993 DOOM popularized 4-player deathmatch and co-op over LAN, while some console ports offered split-screen. This browser WebAssembly port is dedicated to providing an uncompromising, ultra-responsive single-player campaign with local HTML5 save slots. You can load custom deathmatch arenas and single-player practice maps via the WAD loader."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How do game saves, level progression, and DOOM settings work in the browser?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Game saves are safely serialized into your browser private HTML5 LocalStorage partition. You get 6 independent save slots that persist even when you refresh the page or close your browser tab. Use the built-in Save Manager to inspect, back up, or clear your stored saves at any time."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Do people still play DOOM online, and why is classic DOOM still so popular?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Millions of gamers and modders still play classic DOOM online every day. With its masterclass in level architecture, iconic weapon arsenal (Super Shotgun, Chaingun, BFG 9000), immortal Bobby Prince heavy metal soundtrack, and thousands of community mods, original DOOM remains one of the most beloved FPS masterpieces in gaming history."
               }
             }
           ]

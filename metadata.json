@@ -1,6 +1,6 @@
 {
   "name": "Doom WebAssembly",
-  "description": "Play DOOM online in your browser for free with no download. Experience original classic DOOM 1 (1993) in WebAssembly with authentic audio, saves, and custom WADs.",
+  "description": "Play DOOM online in your browser for free with no download. Experience original classic DOOM 1, DOOM 2 & Ultimate DOOM in WebAssembly with WASD controls, controller support, and custom mods on PC, Mac, Chromebook, and Android.",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }

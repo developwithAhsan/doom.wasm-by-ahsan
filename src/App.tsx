@@ -9,6 +9,9 @@ import { SavesModal } from './components/SavesModal';
 import { InGameHud } from './components/InGameHud';
 import { LoadingScreen } from './components/LoadingScreen';
 import { ContentSections } from './components/ContentSections';
+import { VirtualGamepad } from './components/VirtualGamepad';
+import { soundEngine } from './utils/soundEngine';
+import { Gamepad2, Volume2, VolumeX, Keyboard } from 'lucide-react';
 import { NavRoute } from './pages/PageLayout';
 import { PrivacyPage } from './pages/PrivacyPage';
 import { TermsPage } from './pages/TermsPage';
@@ -51,6 +54,10 @@ export const App: React.FC = () => {
     togglePause,
     restartEngine,
     loadCustomWad,
+    sendKeyDown,
+    sendKeyUp,
+    exports,
+    keyMap,
   } = useDoomEngine(canvasRef);
 
   const [currentRoute, setCurrentRoute] = useState<NavRoute>(getRouteFromLocation);
@@ -60,6 +67,18 @@ export const App: React.FC = () => {
   const [isConsoleOpen, setIsConsoleOpen] = useState(false);
   const [isSavesOpen, setIsSavesOpen] = useState(false);
   const [isFullscreen, setIsFullscreen] = useState(false);
+  const [showTouchControls, setShowTouchControls] = useState(false);
+  const [isMuted, setIsMuted] = useState(() => soundEngine.getMuted());
+
+  // Auto-detect mobile touch devices to show virtual gamepad
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+      if (isTouch) {
+        setShowTouchControls(true);
+      }
+    }
+  }, []);
 
   // Listen to browser forward/back buttons and hash changes
   useEffect(() => {
@@ -84,6 +103,7 @@ export const App: React.FC = () => {
   };
 
   const handleStartOrResumeGame = async () => {
+    soundEngine.unlockAudio();
     if (isInitialized) {
       if (status === 'paused') {
         togglePause();
@@ -315,6 +335,64 @@ export const App: React.FC = () => {
           onRestart={restartEngine}
           onTogglePause={togglePause}
         />
+
+        {/* Gameplay Control Toolbar & Quick Assistance */}
+        <div
+          id="doom-gameplay-toolbar"
+          className="w-full mt-2 flex flex-wrap items-center justify-between gap-2 px-3 py-2 bg-[#141c28] border border-[#232e42] text-xs font-mono text-[#7d91a9] select-none"
+        >
+          <div className="flex items-center gap-2">
+            <button
+              id="toolbar-touch-toggle-btn"
+              type="button"
+              onClick={() => setShowTouchControls((prev) => !prev)}
+              className="flex items-center gap-1.5 px-2.5 py-1 bg-[#1a2536] hover:bg-[#233147] active:bg-[#16202e] border border-[#2b3a52] text-white font-sans font-bold text-xs uppercase cursor-pointer transition-colors"
+              title="Toggle On-Screen Touch Controls"
+            >
+              <Gamepad2 className="w-3.5 h-3.5 text-red-400" />
+              <span>{showTouchControls ? 'Hide Touch Controls' : 'Touch Controls'}</span>
+            </button>
+
+            <button
+              id="toolbar-sound-toggle-btn"
+              type="button"
+              onClick={() => {
+                const muted = soundEngine.toggleMute();
+                setIsMuted(muted);
+              }}
+              className="flex items-center gap-1.5 px-2.5 py-1 bg-[#1a2536] hover:bg-[#233147] active:bg-[#16202e] border border-[#2b3a52] text-white font-sans font-bold text-xs uppercase cursor-pointer transition-colors"
+              title={isMuted ? 'Unmute Sound' : 'Mute Sound'}
+            >
+              {isMuted ? <VolumeX className="w-3.5 h-3.5 text-zinc-500" /> : <Volume2 className="w-3.5 h-3.5 text-green-400" />}
+              <span>{isMuted ? 'Muted' : 'Sound ON'}</span>
+            </button>
+
+            <button
+              id="toolbar-keymap-btn"
+              type="button"
+              onClick={() => setIsControlsOpen(true)}
+              className="hidden sm:flex items-center gap-1.5 px-2.5 py-1 bg-[#1a2536] hover:bg-[#233147] active:bg-[#16202e] border border-[#2b3a52] text-white font-sans font-bold text-xs uppercase cursor-pointer transition-colors"
+              title="Open Controls Reference"
+            >
+              <Keyboard className="w-3.5 h-3.5 text-blue-400" />
+              <span>Controls</span>
+            </button>
+          </div>
+
+          <div className="text-[11px] text-[#556982] hidden md:block">
+            <span className="text-zinc-300 font-bold">ESC:</span> Doom Menu &bull; <span className="text-zinc-300 font-bold">WASD / Arrows:</span> Move &bull; <span className="text-zinc-300 font-bold">Ctrl / Left Click:</span> Fire &bull; <span className="text-zinc-300 font-bold">Space:</span> Open
+          </div>
+        </div>
+
+        {/* Virtual Gamepad for Mobile & Touch Devices */}
+        {showTouchControls && (
+          <VirtualGamepad
+            exports={exports}
+            keyMap={keyMap}
+            onKeyDown={sendKeyDown}
+            onKeyUp={sendKeyUp}
+          />
+        )}
       </div>
 
       {/* Global Modals (Accessible from both launcher and game view) */}

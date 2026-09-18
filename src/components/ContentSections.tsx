@@ -10,6 +10,8 @@ import {
   ChevronUp,
   Sparkles,
   Layers,
+  Laptop,
+  Gamepad2,
 } from 'lucide-react';
 
 interface ContentSectionsProps {
@@ -31,44 +33,44 @@ export const ContentSections: React.FC<ContentSectionsProps> = ({
 
   const faqs = [
     {
-      q: 'What is Doom WebAssembly and how does it run in the browser?',
-      a: 'Doom WebAssembly is an authentic, pure client-side port of id Software\'s original 1993 first-person shooter DOOM. Instead of using heavy cloud streaming or third-party emulator plugins, this port compiles the original C source code into a compact WebAssembly (WASM) binary using doomgeneric. The WebAssembly runtime executes at near-native CPU speeds directly inside your web browser sandbox, utilizing HTML5 Canvas for real-time raster rendering and the Web Audio API for sound effects and music synthesis.',
+      q: 'How to play DOOM on browser for free?',
+      a: 'To play DOOM online on browser for free, click the Launch Game button on our homepage. The game loads instantly via WebAssembly into your web browser with no download, no plugins, and no sign-up required. It runs at near-native speed on Chrome, Safari, Firefox, Edge, and Brave across PC, Mac, Linux, and Chromebooks.',
+    },
+    {
+      q: 'Can you play DOOM on Mac, MacBook, or Chromebook?',
+      a: 'Yes, absolutely. If you want to know how to play DOOM on Mac, MacBook, or Chromebook, this WebAssembly port requires no DOSBox installation, Wine emulators, or terminal commands. Simply open any modern browser on macOS or ChromeOS, click launch, and play classic DOOM smoothly in your browser window.',
+    },
+    {
+      q: 'Can you play DOOM online on mobile and Android devices?',
+      a: 'Yes, DOOM online runs directly inside mobile web browsers on Android and iOS (iPhone/iPad). You can launch and play DOOM on mobile without downloading an APK or installing third-party apps. Pairing a Bluetooth gamepad controller or mobile keyboard provides full desktop-grade precision.',
+    },
+    {
+      q: 'Does this DOOM online browser game support controllers and custom WASD controls?',
+      a: 'Yes. Doom WebAssembly features full support for modern WASD keyboard movement, mouse look, and USB/Bluetooth gamepad controllers (including Xbox, PlayStation, and generic PC gamepads). You can customize mouse sensitivity, sound volumes, gamma brightness, and controls through the in-game DOOM settings menu.',
+    },
+    {
+      q: 'Can I play DOOM 2, Ultimate DOOM, Final DOOM, or Brutal DOOM mods online?',
+      a: 'Yes! Our custom WAD loader enables you to play DOOM 2 on browser, The Ultimate DOOM (with Episode 4: Thy Flesh Consumed), Final DOOM (TNT: Evilution and The Plutonia Experiment), and community mods or Brutal DOOM-compatible PWAD maps. Drag and drop your .wad file into the browser, and the engine mounts it in virtual memory instantly without uploading to any remote server.',
+    },
+    {
+      q: 'Do you need DOSBox, an emulator, or any file download to play classic DOOM online?',
+      a: 'No. Unlike legacy DOSBox emulators or Java applets that suffered from audio stuttering and frame drops, this port compiles the authentic 1993 C source code directly to WebAssembly bytecode. There are zero downloads, zero emulators to configure, and zero local files to install.',
     },
     {
       q: 'Is playing DOOM in the web browser legal and free?',
-      a: 'Yes, 100% legal and free. This application distributes the official shareware release of Episode 1: Knee-Deep in the Dead (DOOM1.WAD). On December 10, 1993, id Software released this nine-level episode under a shareware distribution license, allowing global, non-commercial copying and sharing. Furthermore, John Carmack released the original DOOM source code under the GNU General Public License (GPLv2) in 1997, enabling open-source research and modern ports.',
+      a: 'Yes, 100% legal and free. The web version includes the official shareware release of Episode 1: Knee-Deep in the Dead (DOOM1.WAD), which id Software made freely distributable in 1993 for non-commercial evaluation. Additionally, John Carmack released the original DOOM engine source code under the GNU General Public License (GPLv2) in 1997.',
     },
     {
-      q: 'Can I load my own commercial DOOM II, Final DOOM, or community PWAD mods?',
-      a: 'Absolutely! Our built-in Custom WAD Loader allows you to drag-and-drop or select any valid .wad file from your device. Whether you own commercial IWADs (like DOOM2.WAD, TNT.WAD, or PLUTONIA.WAD) or community PWAD map packs (such as John Romero\'s SIGIL, Scythe, or Alien Vendetta), the engine mounts your file into the WebAssembly virtual memory table and boots your custom levels instantly without uploading anything to a remote server.',
+      q: 'Does classic DOOM online have multiplayer, deathmatch, co-op, or split screen?',
+      a: 'The original 1993 DOOM popularized 4-player deathmatch and co-op over LAN, while some console ports offered split-screen. This browser WebAssembly port is dedicated to providing an uncompromising, ultra-responsive single-player campaign with local HTML5 save slots. You can load custom deathmatch arenas and single-player practice maps via the WAD loader.',
     },
     {
-      q: 'How do game saves work and will my progress be saved if I close the tab?',
-      a: 'Your game saves are automatically serialized and safely stored inside your browser\'s local HTML5 LocalStorage partition. The application provides 6 independent save slots that persist indefinitely across browser restarts and page refreshes. You can also review, inspect, and manage your stored game slots anytime via the built-in Save Manager.',
+      q: 'How do game saves, level progression, and DOOM settings work in the browser?',
+      a: 'Game saves are safely serialized into your browser private HTML5 LocalStorage partition. You get 6 independent save slots that persist even when you refresh the page or close your browser tab. Use the built-in Save Manager to inspect, back up, or clear your stored saves at any time.',
     },
     {
-      q: 'Does this Doom WebAssembly port collect or track any user data?',
-      a: 'No. We adhere to a strict zero-telemetry policy. There are no tracking pixels, analytics cookies, remote database logs, or user registration requirements. All gameplay, inputs, save states, and custom WAD uploads execute strictly on your device inside your browser sandbox.',
-    },
-    {
-      q: 'What are the default keyboard and mouse controls for DOOM?',
-      a: 'Movement is handled via WASD or Arrow Keys. Fire your weapon using Ctrl or Left Mouse Click. Interact with doors, switches, and secret walls using the Spacebar. Cycle through your 7 weapons using numbers 1 through 7. Hold Shift to speed-run, and press Escape to open or close the in-game options menu.',
-    },
-    {
-      q: 'Does Doom WebAssembly run on mobile phones, tablets, and Chromebooks?',
-      a: 'Yes. The engine is fully responsive and compatible across desktop PCs, Macs, Linux workstations, Chromebooks, iPhones, iPads, and Android smartphones. Any modern browser that supports standard WebAssembly and Web Audio API will run the game smoothly.',
-    },
-    {
-      q: 'Can I play DOOM online in browser with no download?',
-      a: 'Yes! You can play DOOM online directly in your web browser with zero downloads, plugins, or installations. The entire game binary compiles and loads instantly via WebAssembly into your browser tab in under two seconds.',
-    },
-    {
-      q: 'Is this classic DOOM online port identical to the original 1993 PC DOS release?',
-      a: 'Yes. This is an authentic recreation of original classic DOOM 1 (1993) compiled directly from the open-source C codebase using doomgeneric. It features the exact monster behaviors, weapon physics, secret room triggers, sound effects, and level layouts of Episode 1: Knee-Deep in the Dead.',
-    },
-    {
-      q: 'How does framerate target switching work (35 FPS vs 60 FPS vs Unlocked)?',
-      a: 'The original 1993 DOOM engine was mathematically hardcoded to run its game logic loop at exactly 35 ticks per second (35 Hz). Our WebAssembly port allows you to switch between authentic 35 FPS locking, smooth 60 FPS sync, or an Unlocked mode that utilizes your monitor\'s native requestAnimationFrame refresh rate (up to 144Hz/240Hz). You can toggle this limit directly from the launcher card or the in-game HUD.',
+      q: 'Do people still play DOOM online, and why is classic DOOM still so popular?',
+      a: 'Millions of gamers and modders still play classic DOOM online every day. With its masterclass in level architecture, iconic weapon arsenal (Super Shotgun, Chaingun, BFG 9000), immortal Bobby Prince heavy metal soundtrack, and thousands of community mods, original DOOM remains one of the most beloved FPS masterpieces in gaming history.',
     },
   ];
 
@@ -194,10 +196,42 @@ export const ContentSections: React.FC<ContentSectionsProps> = ({
             flesh-eating <strong>Zombiemen</strong>, fire-hurling <strong>Imps</strong>, relentless <strong>Pinky Demons</strong>,
             and the formidable twin <strong>Barons of Hell</strong> guarding the anomaly gate on E1M8.
           </p>
+        </div>
+
+        {/* Blog Chapter 5 */}
+        <div className="space-y-3 leading-relaxed text-[#9bb0c9]">
+          <h3 className="text-base font-bold text-white uppercase tracking-wide flex items-center gap-2">
+            <Laptop className="w-4 h-4 text-blue-400" />
+            5. How to Play DOOM on Browser: PC, Mac, MacBook &amp; Chromebook
+          </h3>
           <p>
-            More than thirty years after its debut, DOOM remains one of the most influential cultural and technical milestones in
-            human history. The enduring internet question—<em>&quot;Can it run DOOM?&quot;</em>—has been answered across smart
-            thermostats, microwave ovens, ATMs, and digital cameras. Now, with WebAssembly, the answer is: <strong>Any screen, any browser, anywhere.</strong>
+            One of the most frequently asked questions is: <em>&quot;Can you play DOOM on Mac or Chromebook without an emulator?&quot;</em>
+            Historically, playing classic DOS games on modern macOS or ChromeOS required complex DOSBox configurations,
+            mounting drives, and dealing with conflicting keybindings.
+          </p>
+          <p>
+            With this WebAssembly release, playing DOOM online on Mac or Chromebook is as straightforward as visiting a website.
+            Because WebAssembly is a universal W3C web standard, modern versions of Safari, Google Chrome, Mozilla Firefox,
+            and Brave execute the game natively in an isolated hardware-accelerated canvas. There are no downloads, no command-line
+            scripts, and zero configuration steps required.
+          </p>
+        </div>
+
+        {/* Blog Chapter 6 */}
+        <div className="space-y-3 leading-relaxed text-[#9bb0c9]">
+          <h3 className="text-base font-bold text-white uppercase tracking-wide flex items-center gap-2">
+            <Gamepad2 className="w-4 h-4 text-purple-400" />
+            6. Ultimate DOOM, DOOM II, Final DOOM &amp; Custom Mods
+          </h3>
+          <p>
+            The original DOOM was engineered around a modular file architecture called <strong>WADs (&quot;Where&apos;s All the Data&quot;)</strong>.
+            This architectural decision birthed the modern game modding scene.
+          </p>
+          <p>
+            Our web port honors that legacy with a client-side Custom WAD Loader. Whether you want to play <strong>DOOM 2 on browser</strong>,
+            experience <strong>The Ultimate DOOM</strong> (with Episode 4), run <strong>Final DOOM (TNT Evilution &amp; The Plutonia Experiment)</strong>,
+            or load legendary community PWAD maps like John Romero&apos;s <em>SIGIL</em> and <em>Brutal DOOM</em> level packs,
+            you can simply mount your WAD file into memory and experience thirty years of custom level engineering without leaving your browser.
           </p>
         </div>
       </article>
@@ -317,7 +351,7 @@ export const ContentSections: React.FC<ContentSectionsProps> = ({
               Frequently Asked Questions (FAQ)
             </h3>
             <p className="text-xs text-[#556982] mt-0.5">
-              Comprehensive answers regarding browser performance, legality, saves, and custom WADs
+              Comprehensive answers regarding browser performance, Mac/Chromebook compatibility, controls, saves, and custom WADs
             </p>
           </div>
           <span className="text-xs font-mono text-emerald-400 bg-emerald-950/40 border border-emerald-800/60 px-2.5 py-1 rounded-xs">

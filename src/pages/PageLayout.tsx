@@ -9,7 +9,6 @@ import {
   ArrowLeft,
   Printer,
   ChevronRight,
-  Crosshair,
 } from 'lucide-react';
 
 export type NavRoute = 'home' | 'privacy' | 'terms' | 'disclaimer' | 'sitemap' | 'robots';
@@ -76,8 +75,13 @@ export const PageLayout: React.FC<PageLayoutProps> = ({
           onClick={() => onNavigate('home')}
           className="flex items-center gap-3 text-left group cursor-pointer"
         >
-          <div className="w-10 h-10 bg-red-950/70 border border-red-800/80 flex items-center justify-center rounded-xs shadow-lg group-hover:border-red-600 transition-colors">
-            <Crosshair className="w-5 h-5 text-red-500" />
+          <div className="w-10 h-10 bg-red-950/70 border border-red-800/80 flex items-center justify-center rounded-xs shadow-lg group-hover:border-red-600 transition-colors p-1">
+            <img
+              src="/favicon.svg"
+              alt="DOOM Icon"
+              className="w-7 h-7 object-contain"
+              referrerPolicy="no-referrer"
+            />
           </div>
           <div>
             <span className="text-base font-black text-white uppercase tracking-wider font-sans block group-hover:text-red-400 transition-colors">
